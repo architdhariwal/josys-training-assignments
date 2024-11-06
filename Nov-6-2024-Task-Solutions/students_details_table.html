@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Programming -- Array Of Objects</title>
+    <style>
+        h1 {
+            font-family: serif;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            font-family: serif;
+            font-size: 1.2em;
+        }
+        
+        button {
+            padding: 8px 16px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Programming -- Array Of Objects</h1>
+
+        <hr><br>
+        
+        <button onclick="getData()">Get Data</button>
+        
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>Student Id</th>
+                    <th>Student Name</th>
+                    <th>Skill Set</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const students = [
+            { id: '454545', name: 'Swapna', skillSet: 'Angular' },
+            { id: '454546', name: 'Eram', skillSet: 'React' },
+            { id: '454547', name: 'Manika', skillSet: 'Node JS' },
+            { id: '454548', name: 'Riya', skillSet: 'HTML5' },
+            { id: '454549', name: 'Vasundara', skillSet: 'Angular' }
+        ];
+
+        function getData() {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = ''; 
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                const idCell = document.createElement('td');
+                idCell.textContent = student.id;
+                
+                const nameCell = document.createElement('td');
+                nameCell.textContent = student.name;
+                
+                const skillCell = document.createElement('td');
+                skillCell.textContent = student.skillSet;
+                
+                row.appendChild(idCell);
+                row.appendChild(nameCell);
+                row.appendChild(skillCell);
+                
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>

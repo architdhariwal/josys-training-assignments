@@ -1,0 +1,106 @@
+1. What is map() array method?  How to use  map() method in javascript?
+
+The map() method creates a new array by performing a function on each element in the array.
+It doesn't change the original array.
+- map() always returns a new array of the same length as the original.
+
+Basic Syntax: array.map(function(currentValue, index, arr), thisValue)
+
+Examples:
+
+a) Basic number multiplication:
+
+let numbers = [1, 2, 3, 4];
+let doubled = numbers.map(num => num * 2);
+Output: [2, 4, 6, 8]
+
+
+b) Processing array of objects:
+
+let persons = [
+    {name: 'John', age: 30},
+    {name: 'Jane', age: 25}
+];
+let names = persons.map(person => person.name);
+Output: ['John', 'Jane']
+
+
+c) With index parameter:
+
+let nums = [1, 2, 3];
+let indexed = nums.map((num, index) => `Index ${index}: ${num}`);
+Output: ['Index 0: 1', 'Index 1: 2', 'Index 2: 3']
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+2. What are other usages of spread operator (...) in JavaScript?
+
+The spread operator (...) allows arrays or objects to be expanded into individual elements.
+- Spread operator creates shallow copies only.
+- When spreading objects, later properties override earlier ones.
+- Spread operator is useful for creating immutable data structures.
+- We cannot spread undefined or null.
+
+Different Uses:
+
+1) Array Operations:
+   
+   // Copy array
+   let original = [1, 2, 3];
+   let copy = [...original];
+
+   // Combine arrays
+   let arr1 = [1, 2];
+   let arr2 = [3, 4];
+   let combined = [...arr1, ...arr2];
+    Output: [1, 2, 3, 4]
+
+   // Add elements
+   let nums = [1, 2];
+   let moreNums = [...nums, 3, 4];
+   Output: [1, 2, 3, 4]
+   
+
+2) Object Operations:
+   
+   // Copy object
+   let obj = {x: 1, y: 2};
+   let copyObj = {...obj};
+
+   // Merge objects
+   let obj1 = {a: 1};
+   let obj2 = {b: 2};
+   let merged = {...obj1, ...obj2};
+   Output: {a: 1, b: 2}
+   
+
+3) Function Arguments:
+
+   // Spread as arguments
+   let numbers = [1, 2, 3];
+   console.log(Math.max(...numbers));
+
+   // Rest parameters
+   function sum(...args) {
+       return args.reduce((sum, num) => sum + num, 0);
+   }
+   
+
+4) String to Array:
+   
+   let str = "Hello";
+   let chars = [...str];
+   // Output: ['H', 'e', 'l', 'l', 'o']
+   
+
+5) In Destructuring:
+   
+   // Array destructuring
+   let [first, second, ...rest] = [1, 2, 3, 4, 5];
+   // first = 1, second = 2, rest = [3, 4, 5]
+
+   // Object destructuring
+   let {x, y, ...remaining} = {x: 1, y: 2, z: 3, w: 4};
+   // x = 1, y = 2, remaining = {z: 3, w: 4}
+   
+
