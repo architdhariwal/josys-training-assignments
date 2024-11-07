@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Operations</title>
+</head>
+<body>
+  <h1>Mathematical Operations</h1>
+  <hr>
+  <div>
+    <label for="firstNumber">First Number:</label>
+    <input type="number" id="firstNumber" value="10">
+  </div>
+  <br>
+  <div>
+    <label for="secondNumber">Second Number:</label>
+    <input type="number" id="secondNumber" value="20">
+  </div>
+  <br>
+  <div>
+    <button id="add">Add</button>
+    <button id="subtract">Subtract</button>
+    <button id="multiply">Multiply</button>
+  </div>
+  <br>
+  <div id="result"></div>
+
+  <script>
+    document.querySelector('body').addEventListener('click', function(event) {
+      if (event.target.tagName === 'BUTTON') {
+        performOperation(event.target.id);
+      }
+    });
+
+    function performOperation(operation) {
+      const firstNumber = parseFloat(document.getElementById("firstNumber").value);
+      const secondNumber = parseFloat(document.getElementById("secondNumber").value);
+      let result;
+
+      switch (operation) {
+        case "add":
+          result = firstNumber + secondNumber;
+          break;
+        case "subtract":
+          result = firstNumber - secondNumber;
+          break;
+        case "multiply":
+          result = firstNumber * secondNumber;
+          break;
+      }
+
+      
+      document.getElementById("result").innerHTML = `Total Amount : ${result.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

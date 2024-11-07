@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generating new rows with Dynamic Data</title>
+    <style>
+      table {
+        width: 40%;
+        border-collapse: separate;
+        border-spacing: 5px;
+      }
+
+      th {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold; 
+      }
+
+      td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      input {
+        width: 24%;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+
+      button {
+        padding: 5px 10px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .table-container {
+        border: 3px solid #999797; 
+        padding: 4px;
+        width: fit-content;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Generating new rows with Dynamic Data</h1>
+    <hr><br>
+
+    <div>
+      <input type="text" id="empno" name="empno" value="10256" placeholder="Empno"/>
+      <input type="text" id="ename" name="ename" value="Narasimha" placeholder="Ename" />
+      <input type="text" id="job" name="job" value="Manager" placeholder="Job"/>
+      <input type="text" id="salary" name="salary" value="75000" placeholder="Salary"/>
+    </div>
+
+    <br>
+
+    <button id="addButton">Add to Table</button>
+    <hr>
+
+    <div class="table-container">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Empno</th>
+            <th>Ename</th>
+            <th>Job</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      const tableBody = document.querySelector("#dataTable tbody");
+      const addButton = document.getElementById("addButton");
+      const empnoInput = document.getElementById("empno");
+      const enameInput = document.getElementById("ename");
+      const jobInput = document.getElementById("job");
+      const salaryInput = document.getElementById("salary");
+
+      addButton.addEventListener("click", () => {
+        const empno = empnoInput.value;
+        const ename = enameInput.value;
+        const job = jobInput.value;
+        const salary = salaryInput.value;
+
+        if (empno && ename && job && salary) {
+          const newRow = document.createElement("tr");
+
+          const empnoCell = document.createElement("td");
+          empnoCell.textContent = empno;
+          newRow.appendChild(empnoCell);
+
+          const enameCell = document.createElement("td");
+          enameCell.textContent = ename;
+          newRow.appendChild(enameCell);
+
+          const jobCell = document.createElement("td");
+          jobCell.textContent = job;
+          newRow.appendChild(jobCell);
+
+          const salaryCell = document.createElement("td");
+          salaryCell.textContent = salary;
+          newRow.appendChild(salaryCell);
+
+          tableBody.appendChild(newRow);
+
+          empnoInput.value = "";
+          enameInput.value = "";
+          jobInput.value = "";
+          salaryInput.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

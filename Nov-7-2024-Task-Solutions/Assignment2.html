@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Details Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label for="productName">Product Name:</label>
+    <input type="text" id="productName" value="Printer">
+    <br><br>
+    <label for="unitPrice">Unit Price:</label>
+    <input type="number" id="unitPrice" value="2500">
+    <br><br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" value="3">
+    <br><br>
+
+    <button onclick="calculateTotal()">Calculate Total</button>
+    <br><br>
+
+    <div id="totalAmount"></div>
+  </div>
+
+  <script>
+    function calculateTotal() {
+      const proceed = confirm("Do you want to proceed with the total calculation?");
+      if (!proceed) {
+        return;
+      }
+
+      const productName = document.getElementById('productName').value;
+      const unitPrice = parseFloat(document.getElementById('unitPrice').value);
+      const quantity = parseInt(document.getElementById('quantity').value);
+
+      let discount = 0;
+      let total = unitPrice * quantity;
+
+      if (quantity > 30) {
+        discount = 0.2;
+      } else if (quantity > 20) {
+        discount = 0.15;
+      } else if (quantity > 10) {
+        discount = 0.1;
+      }
+
+      total -= total * discount;
+
+      const totalAmountElement = document.getElementById('totalAmount');
+      totalAmountElement.innerHTML = `Total Amount : ${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Programming</title>
+  <style>
+    .container {
+      position: relative;
+      border: 1px solid #4f4f4f;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .container:before {
+      content: "User Login";
+      position: absolute;
+      top: -15px;
+      left: 10px;
+      background-color: white;
+      padding: 0 5px;
+      font-weight: bold;
+    }
+    .message {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .valid {
+      color: green;
+    }
+    .invalid {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Programming</h1>
+    <hr>
+    <form id="loginForm">
+      <label for="username">User Name:</label>
+      <input type="text" id="username" name="username" required>
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+      <button type="submit">Login</button>
+    </form>
+    <br>
+    <div id="result" class="message"></div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      validateLogin();
+    });
+
+    function validateLogin() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "password") {
+        document.getElementById("result").innerHTML = "Welcome to admin";
+        document.getElementById("result").classList.add("valid");
+        document.getElementById("result").classList.remove("invalid");
+      } else {
+        document.getElementById("result").innerHTML = "Invalid user id or password";
+        document.getElementById("result").classList.add("invalid");
+        document.getElementById("result").classList.remove("valid");
+      }
+    }
+  </script>
+</body>
+</html>
