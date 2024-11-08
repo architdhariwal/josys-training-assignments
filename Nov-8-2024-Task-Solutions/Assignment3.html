@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+        .university-item:nth-child(odd) {
+            color: #ac7070;
+        }
+        .university-item:nth-child(even) {
+            color: #555;
+        }
+        .message {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>University Finder</h1>
+
+    <form id="universityForm">
+        <label for="country">Enter Country Name:</label>
+        <input type="text" id="country" placeholder="e.g., India" required><br>
+        
+        <label for="countriesNumber">Enter no. of countries (1-20):</label>
+        <input type="number" id="countriesNumber" placeholder="e.g. 20" min="1" max="20" required>
+        <br>
+        <button type="submit" id="fetchButton">Get Universities</button>
+    </form>
+    
+    <div id="output"></div>
+    
+    <script>
+        const fetchButton = document.getElementById('fetchButton');
+        const countryInput = document.getElementById('country');
+        const countryNumberInput = document.getElementById('countriesNumber');
+        const output = document.getElementById('output');
+        const universityForm = document.getElementById('universityForm');
+        
+        universityForm.addEventListener('submit', async (event) => {
+        // Here i am handling the form submit event 
+            event.preventDefault(); 
+
+            const country = countryInput.value.trim().toLowerCase();
+            const limit = parseInt(countryNumberInput.value);
+            output.innerHTML = ''; 
+
+            // here is the validation ofr country and limit input
+            if (!country || isNaN(limit) || limit < 1 || limit > 20) {
+                output.innerHTML = '<p class="message">Please enter a valid country name and number between 1 and 20.</p>';
+                return;
+            }
+
+            //here this api is handling limit functionality so i used this ,we can also do this by taking response and then limit to 20;
+            const url = `http://universities.hipolabs.com/search?country=${country}&limit=${limit}`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const data = await response.json();
+                // console.log("data--->",data);
+                if (!data.length) {
+                    output.innerHTML = '<p class="message">No universities found for the specified country.</p>';
+                    return;
+                }
+
+                const ol = document.createElement('ol');
+                data.forEach(university => {
+                    const li = document.createElement('li');
+                    li.className = 'university-item';
+                    li.textContent = `${university.name} - ${university["state-province"] || 'N/A'}`;
+                    ol.appendChild(li);
+                });
+
+                output.appendChild(ol);
+
+            } catch (error) {
+                output.innerHTML = `<p class="message">Failed to fetch data: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
+

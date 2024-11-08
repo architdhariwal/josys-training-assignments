@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <style>
+        #slideshow {
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="slideshow">
+        <img src="./images/silde_show.jpg" alt="Slideshow Image">
+    </div>
+
+    <div class="controls">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+    </div>
+
+    <script>
+        const images = [
+            'images/image1.jpeg',
+            'images/image2.jpeg',
+            'images/image3.jpeg',
+            'images/image4.jpeg'
+        ];
+
+        let slideshowInterval;
+        let isSlideshowActive = false;
+        let currentIndex = 0;  
+
+        const slideshowContainer = document.getElementById('slideshow');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+
+        const changeImage = () => {
+            slideshowContainer.querySelector('img').src = images[currentIndex];
+            currentIndex = (currentIndex + 1) % images.length;
+        };
+
+        const startSlideshow = () => {
+            if (!isSlideshowActive) {
+                slideshowInterval = setInterval(changeImage, 2000); 
+                isSlideshowActive = true;
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            }
+        };
+
+    
+        const stopSlideshow = () => {
+            clearInterval(slideshowInterval);
+            isSlideshowActive = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            slideshowContainer.querySelector('img').src = './images/silde_show.jpg';
+        };
+
+
+        startBtn.addEventListener('click', startSlideshow);
+        stopBtn.addEventListener('click', stopSlideshow);
+    </script>
+
+</body>
+</html>
