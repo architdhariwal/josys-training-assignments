@@ -73,12 +73,12 @@
 
             try {
                 const response = await fetch(url);
-                if (!response.ok) throw new Error('Network response was not ok');
+                if (!response.ok) throw new Error('Network response error');
                 
                 const data = await response.json();
                 // console.log("data--->",data);
                 if (!data.length) {
-                    output.innerHTML = '<p class="message">No universities found for the specified country.</p>';
+                    output.innerHTML = '<p class="message">No universities found for this country.</p>';
                     return;
                 }
 
@@ -93,7 +93,7 @@
                 output.appendChild(ol);
 
             } catch (error) {
-                output.innerHTML = `<p class="message">Failed to fetch data: ${error.message}</p>`;
+                output.innerHTML = `<p class="message">Data fetching failed: ${error.message}</p>`;
             }
         });
     </script>
