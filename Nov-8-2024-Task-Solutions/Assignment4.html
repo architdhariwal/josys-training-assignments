@@ -59,9 +59,17 @@
         const startBtn = document.getElementById('startBtn');
         const stopBtn = document.getElementById('stopBtn');
 
-        const changeImage = () => {
-            slideshowContainer.querySelector('img').src = images[currentIndex];
-            currentIndex = (currentIndex + 1) % images.length;
+        // this is sequential logic 
+
+        // const changeImage = () => {
+        //     slideshowContainer.querySelector('img').src = images[currentIndex];
+        //     currentIndex = (currentIndex + 1) % images.length;
+        // };
+
+         // random image change logic
+         const changeImage = () => {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            slideshowContainer.querySelector('img').src = images[randomIndex];
         };
 
         const startSlideshow = () => {
