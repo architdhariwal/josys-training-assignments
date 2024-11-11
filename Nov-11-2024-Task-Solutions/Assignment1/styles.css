@@ -7,7 +7,7 @@
 
 body {
     background-color: #fff;
-    padding: 20px;
+    padding: 15px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -15,38 +15,40 @@ body {
 h1 {
     text-align: center;
     margin: 20px 0 40px;
-    font-size: 24px;
+    font-size: clamp(20px, 4vw, 24px);
     font-weight: bold;
 }
 
 .book-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 0 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
 }
 
 .book-card {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    width: 100%;
 }
 
 .book-card img {
     height: 200px;
     width: auto;
+    max-width: 100%;
     margin-bottom: 20px;
     object-fit: cover;
 }
 
 .book-title {
-    font-size: 16px;
+    font-size: clamp(14px, 3vw, 16px);
     margin: 10px 0;
     font-weight: normal;
 }
@@ -54,18 +56,23 @@ h1 {
 .book-price {
     color: #333;
     margin: 15px 0;
-    font-size: 14px;
+    font-size: clamp(12px, 2.5vw, 14px);
+}
+
+.add-to-cart, .remove-to-cart {
+    width: 100%;
+    max-width: 200px;
+    padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: clamp(12px, 2.5vw, 14px);
+    margin-top: 10px;
+    border: none;
 }
 
 .add-to-cart {
     background-color: #4CAF50;
     color: white;
-    border: none;
-    padding: 8px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 10px;
 }
 
 .add-to-cart:hover {
@@ -75,12 +82,6 @@ h1 {
 .remove-to-cart {
     background-color: #e64747;
     color: white;
-    border: none;
-    padding: 8px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 10px;
 }
 
 .remove-to-cart:hover {
@@ -90,11 +91,11 @@ h1 {
 #shopping-cart {
     margin-top: 40px;
     border-top: 1px solid #e0e0e0;
-    padding: 20px;
+    padding: 20px 10px;
 }
 
 .cart-title {
-    font-size: 20px;
+    font-size: clamp(18px, 3.5vw, 20px);
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -109,10 +110,49 @@ h1 {
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #total {
     margin-top: 20px;
     font-weight: bold;
     text-align: right;
+    font-size: clamp(14px, 3vw, 16px);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .book-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .book-card {
+        padding: 15px;
+    }
+    
+    #cart-items li {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #cart-items li button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .book-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .book-card img {
+        height: 180px;
+    }
 }
