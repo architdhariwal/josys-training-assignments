@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore</title>
-    <link rel="stylesheet" href="./styles.css">
-   
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Welcome to our Bookstore!</h1>
@@ -19,13 +18,13 @@
     </div>
 
     <script>
-       const books = [
-  { id: 1, title: "Ikigai", price: 10, image: "./Images/ikigai.jpg" },
-  { id: 2, title: "Psychology of Money", price: 15, image: "./Images/psychology.jpg" },
-  { id: 3, title: "Rich Dad Poor Dad", price: 25, image: "./Images/rich_dad.jpg" },
-  { id: 4, title: "Thinking, Fast and Slow", price: 30, image: "./Images/thinking.jpg" },
-  { id: 5, title: "Grandma's Bag of Stories", price: 20, image: "./Images/grandma.jpg" },
-  { id: 6, title: "Manika", price: 35, image: "./Images/manika.jpg" },
+const books = [
+    { id: 1, title: "Ikigai", price: 10, image: "./Images/ikigai.jpg" },
+    { id: 2, title: "Psychology of Money", price: 15, image: "./Images/psychology.jpg" },
+    { id: 3, title: "Rich Dad Poor Dad", price: 25, image: "./Images/rich_dad.jpg" },
+    { id: 4, title: "Thinking, Fast and Slow", price: 30, image: "./Images/thinking.jpg" },
+    { id: 5, title: "Grandma's Bag of Stories", price: 20, image: "./Images/grandma.jpg" },
+    { id: 6, title: "Manika", price: 35, image: "./Images/manika.jpg" },
 ];
 
 let cart = [];
@@ -48,8 +47,17 @@ function displayBooks() {
 }
 
 function addToCart(bookId) {
-    const book = books.find(b => b.id === bookId);
-    cart.push(book);
+    const existingItem = cart.find(item => item.id === bookId);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        const book = books.find(b => b.id === bookId);
+        cart.push({
+            ...book,
+            quantity: 1
+        });
+    }
     updateCart();
 }
 
@@ -58,17 +66,38 @@ function removeFromCart(index) {
     updateCart();
 }
 
+function incrementQuantity(index) {
+    cart[index].quantity += 1;
+    updateCart();
+}
+
+function decrementQuantity(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+        updateCart();
+    } else {
+        removeFromCart(index);
+    }
+}
+
 function updateCart() {
     const cartItems = document.getElementById('cart-items');
     cartItems.innerHTML = '';
     let total = 0;
 
     cart.forEach((item, index) => {
-        total += item.price;
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
         const li = document.createElement('li');
         li.innerHTML = `
-            ${item.title} - $${item.price}
-            <button class="remove-to-cart" onclick="removeFromCart(${index})">Remove</button>
+            ${item.title} - $${item.price} 
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="decrementQuantity(${index})">-</button>
+                <span class="quantity-display">${item.quantity}</span>
+                <button class="quantity-btn" onclick="incrementQuantity(${index})">+</button>
+                <button class="remove-to-cart" onclick="removeFromCart(${index})">Remove</button>
+            </div>
         `;
         cartItems.appendChild(li);
     });

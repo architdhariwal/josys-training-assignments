@@ -59,20 +59,20 @@ h1 {
     font-size: clamp(12px, 2.5vw, 14px);
 }
 
-.add-to-cart, .remove-to-cart {
-    width: 100%;
-    max-width: 200px;
+.add-to-cart, .remove-to-cart, .quantity-btn {
     padding: 8px 24px;
     border-radius: 4px;
     cursor: pointer;
     font-size: clamp(12px, 2.5vw, 14px);
-    margin-top: 10px;
     border: none;
 }
 
 .add-to-cart {
+    width: 100%;
+    max-width: 200px;
     background-color: #4CAF50;
     color: white;
+    margin-top: 10px;
 }
 
 .add-to-cart:hover {
@@ -86,6 +86,29 @@ h1 {
 
 .remove-to-cart:hover {
     background-color: #bd2121;
+}
+
+.quantity-btn {
+    background-color: #4a90e2;
+    color: white;
+    padding: 4px 12px;
+}
+
+.quantity-btn:hover {
+    background-color: #357abd;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+.quantity-display {
+    font-size: 16px;
+    min-width: 30px;
+    text-align: center;
 }
 
 #shopping-cart {
