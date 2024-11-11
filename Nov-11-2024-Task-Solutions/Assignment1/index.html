@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="./styles.css">
+   
+</head>
+<body>
+    <h1>Welcome to our Bookstore!</h1>
+    
+    <div class="book-container" id="book-list"></div>
+    
+    <div id="shopping-cart">
+        <h2 class="cart-title">Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p id="total"></p>
+    </div>
+
+    <script>
+       const books = [
+  { id: 1, title: "Ikigai", price: 10, image: "./Images/ikigai.jpg" },
+  { id: 2, title: "Psychology of Money", price: 15, image: "./Images/psychology.jpg" },
+  { id: 3, title: "Rich Dad Poor Dad", price: 25, image: "./Images/rich_dad.jpg" },
+  { id: 4, title: "Thinking, Fast and Slow", price: 30, image: "./Images/thinking.jpg" },
+  { id: 5, title: "Grandma's Bag of Stories", price: 20, image: "./Images/grandma.jpg" },
+  { id: 6, title: "Manika", price: 35, image: "./Images/manika.jpg" },
+];
+
+let cart = [];
+
+function displayBooks() {
+    const bookList = document.getElementById('book-list');
+    bookList.innerHTML = '';
+    
+    books.forEach(book => {
+        const bookCard = document.createElement('div');
+        bookCard.className = 'book-card';
+        bookCard.innerHTML = `
+            <img src="${book.image}" alt="${book.title}">
+            <h3 class="book-title">${book.title}</h3>
+            <p class="book-price">Price: $${book.price}</p>
+            <button class="add-to-cart" onclick="addToCart(${book.id})">Add to Cart</button>
+        `;
+        bookList.appendChild(bookCard);
+    });
+}
+
+function addToCart(bookId) {
+    const book = books.find(b => b.id === bookId);
+    cart.push(book);
+    updateCart();
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price;
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${item.title} - $${item.price}
+            <button class="remove-to-cart" onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItems.appendChild(li);
+    });
+
+    document.getElementById('total').innerText = `Total: $${total}`;
+}
+
+document.addEventListener('DOMContentLoaded', displayBooks);
+    </script>
+</body>
+</html>
