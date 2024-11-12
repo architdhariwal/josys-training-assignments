@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <!-- added this link for accessing font-awesome web components icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Library Management System</h1>
+            <p>Manage books, users, and borrowing with ease</p>
+        </div>
+        
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Book Management Card-->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-book"></i>
+                        <h2>Add Book</h2>
+                    </div>
+                    <form id="bookForm">
+                        <div class="form-group">
+                            <input type="text" id="bookTitle" placeholder="Book Title" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="bookAuthor" placeholder="Author" required>
+                        </div>
+                        <button type="submit">Add Book</button>
+                    </form>
+                </div>
+
+                <!-- User Management Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-user"></i>
+                        <h2>Add User</h2>
+                    </div>
+                    <form id="userForm">
+                        <div class="form-group">
+                            <input type="text" id="userName" placeholder="User Name" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="userType">
+                                <option value="regular">Regular User (2 books max)</option>
+                                <option value="member">Library Member (5 books max)</option>
+                            </select>
+                        </div>
+                        <button type="submit">Add User</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Transactions Section -->
+                <div class="card full-width">
+                    <div class="card-header">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h2>Book Transactions</h2>
+                    </div>
+                    <div class="transactions">
+                        <!-- Book Borrowing -->
+                        <div>
+                            <div class="form-group">
+                                <select id="borrowerSelect">
+                                    <option value="">Select User</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select id="availableBooksSelect">
+                                    <option value="">Select Book</option>
+                                </select>
+                            </div>
+                            <button id="borrowBtn">Borrow Book</button>
+                        </div>
+
+                        <!-- Book Return -->
+                        <div>
+                            <div class="form-group">
+                                <select id="returnerSelect">
+                                    <option value="">Select User</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select id="borrowedBooksSelect">
+                                    <option value="">Select Book</option>
+                                </select>
+                            </div>
+                            <button id="returnBtn">Return Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Books List Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-list"></i>
+                        <h2>Available Books</h2>
+                    </div>
+                    <div id="availableBooksList" class="list"></div>
+                </div>
+
+                <!-- User Information Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-users"></i>
+                        <h2>User Information</h2>
+                    </div>
+                    <div id="usersList" class="list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
