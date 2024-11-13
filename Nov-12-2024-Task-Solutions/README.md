@@ -26,10 +26,9 @@ This system provides different borrowing privileges based on user type:
 Below are some screenshots of the Library Management System UI, demonstrating the interface for each user type.
 
 ### Home Page
-![Home Page](screenshots/screenshot_(251).png)
+![Home Page - 1st half](screenshots/screenshot_(251).png)
 
-### User Dashboard
-![User Dashboard](screenshots/screenshot_(252).png)
+![Home Page - 2nd half](screenshots/screenshot_(252).png)
 
 ## Run
 1. index.html
