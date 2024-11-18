@@ -1,0 +1,74 @@
+1.  What is useMemo() hook? Study more details with example?
+
+useMemo is a React Hook that lets you cache the result of a calculation between re-renders.
+It's used to optimize performance by memoizing expensive computations so they only run when their dependencies change.
+
+When you have a heavy computation or a costly function inside your component that doesn't need to be recalculated on every render.It memoizes the result and only recomputes it when the dependencies change.
+
+
+Example:-
+
+import React, { useState, useMemo } from 'react';
+
+function ExpensiveCalculation() {
+  const [count, setCount] = useState(0);
+  const [numberList, setNumberList] = useState([1, 2, 3, 4, 5]);
+
+  // Expensive calculation memoized with useMemo
+  const sum = useMemo(() => {
+    console.log("Calculating sum..."); 
+    return numberList.reduce((total, num) => total + num, 0);
+  }, [numberList]);
+
+  return (
+    <div>
+      <h2>Sum: {sum}</h2>
+      <button onClick={() => setCount(count + 1)}>
+        Count: {count}
+      </button>
+    </div>
+  );
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.  What is useCallback() hook? Study more details with example?
+
+
+useCallback is a React Hook that lets you cache a function definition between re-renders. It's similar to useMemo but specifically for functions.
+
+When you have a component that depends on a callback function(eg. event handler) and you want to prevent it from being recreated on every render.This is useful in scenarios where you pass the callback as a prop to child components,and you want to avoid unncessary re-renders.
+
+Example:-
+
+import React, { useState, useCallback } from 'react';
+
+function ParentComponent() {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  // Memoized callback
+  const addTodo = useCallback(() => {
+    setTodos(prev => [...prev, `New Todo ${prev.length + 1}`]);
+  }, []); 
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <ChildComponent todos={todos} addTodo={addTodo} />
+    </div>
+  );
+}
+
+function ChildComponent({ todos, addTodo }) {
+  console.log("Child component rendered");
+  return (
+    <div>
+      <button onClick={addTodo}>Add Todo</button>
+      {todos.map((todo, index) => (
+        <p key={index}>{todo}</p>
+      ))}
+    </div>
+  );
+}
