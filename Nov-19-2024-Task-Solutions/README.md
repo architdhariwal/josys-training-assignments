@@ -1,18 +1,3 @@
-# React App Assignment
-
-This project was bootstrapped with [Create React App] and includes multiple assignments demonstrating different React concepts and features.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-
-
 ## Assignments Overview
 
 This project contains multiple assignments that cover a variety of React concepts such as Context API, Higher Order Components (HOC), Custom Hooks, and Lifecycle Methods.
@@ -56,6 +41,3 @@ This assignment demonstrates the use of React lifecycle methods (i.e., `componen
 ## Notes
 
 Short notes for each assignment are stored in `.txt` files adjacent to the React app for easy reference.
-
-
-
