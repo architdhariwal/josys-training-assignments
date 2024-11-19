@@ -1,0 +1,39 @@
+React class components have a set of lifecycle methods that are invoked at different stages of the component's life. These stages include when the component is created, mounted to the DOM, updated, and unmounted. The lifecycle methods can be divided into three main phases:
+
+1. Mounting (When the component is created and inserted into the DOM)
+constructor(props):
+
+-Called when the component is created.
+-Used to initialize state and bind methods.
+-super(props) is required to access this and pass props to the base React.Component class.
+
+render():
+
+-The only required method in a class component.
+-It returns the JSX that defines how the UI should look.
+-It is called during the initial mounting and also during re-renders.
+
+
+componentDidMount():
+
+-Called once the component has been rendered to the screen.
+-It is often used for API calls, subscriptions, or initiating timers.
+-Can be used to update state after the component is mounted (e.g., loading data from an API).
+
+2. Updating (When the component's state or props change)
+
+render():
+
+-Called again during re-renders after state or props change.
+
+componentDidUpdate(prevProps, prevState, snapshot):
+
+-Called after the component's updates have been flushed to the DOM.
+-It can be used to perform side effects based on the changes (e.g., fetching new data when a prop changes).
+-The snapshot value from getSnapshotBeforeUpdate is passed as the third argument.
+
+
+3. Unmounting (When the component is removed from the DOM)
+componentWillUnmount():
+-Called just before the component is removed from the DOM.
+-It is used for cleanup tasks such as invalidating timers, canceling network requests, or cleaning up subscriptions.

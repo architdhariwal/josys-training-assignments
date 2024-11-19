@@ -1,0 +1,45 @@
+The Context API allows you to create a global state that can be accessed by any component in the component tree, regardless of how deep it is nested. This eliminates the need to pass props down through multiple layers of components, simplifying the process of sharing data that’s relevant to different parts of your application.
+
+
+1. Creating the Context
+First, you need to create the context itself using the React.createContext method:
+
+import React from 'react';
+const MyContext = React.createContext();
+export default MyContext;
+
+
+2. Providing Context in a Parent Component
+In your parent component, you would typically wrap the child components that need access to the context with the MyContext.Provider. However, when working with class components, you'll need to make use of the MyContext.Consumer component instead:
+
+import React, { Component } from 'react';
+import MyContext from './MyContext';
+class ParentComponent extends Component {
+  render() {
+    return (
+      <MyContext.Provider value={{ /* Your context data */ }}>
+        {/* Render your child components here */}
+      </MyContext.Provider>
+    );
+  }
+}
+export default ParentComponent;
+
+
+3. Accessing Context in a Class Component
+Now comes the part where you actually use the useContext hook in your class component. You'll need to use the Consumer component from the MyContext object to access the context data:
+
+import React, { Component } from 'react';
+import MyContext from './MyContext';
+class ChildComponent extends Component {
+  render() {
+    return (
+      <MyContext.Consumer>
+        {context => (
+          /* Use context data here */
+        )}
+      </MyContext.Consumer>
+    );
+  }
+}
+export default ChildComponent;
