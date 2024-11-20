@@ -1,0 +1,122 @@
+.bank-app {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.balance-section {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.balance-amount {
+  font-size: 2.5em;
+  color: #2c3e50;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.deposit-btn {
+  background: #6fcd98;
+  color: white;
+}
+
+.withdraw-btn {
+  background: #b04539;
+  color: white;
+}
+
+.undo-btn {
+  background: #95a5a6;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.error {
+  color: #e74c3c;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.transactions {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.transaction-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.transaction-type {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.deposit {
+  background: #d5f5e3;
+  color: #27ae60;
+}
+
+.withdraw {
+  background: #fadbd8;
+  color: #c0392b;
+}
+
+.category-tag {
+  background: #eee;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #666;
+}
+
+.amount {
+  font-weight: 600;
+}
