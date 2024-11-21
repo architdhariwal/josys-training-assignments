@@ -1,0 +1,112 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Raman Singh",
+      "city": "New York",
+      "contactNumber": "1234567890",
+      "year": 2023,
+      "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+      "totalPurchasesPerYear": 5000
+    },
+    {
+      "id": 2,
+      "name": "Aviral",
+      "city": "Los Angeles",
+      "contactNumber": "9876543210",
+      "year": 2022,
+      "photo": "https://randomuser.me/api/portraits/women/2.jpg",
+      "totalPurchasesPerYear": 7500
+    },
+    {
+      "id": 3,
+      "name": "Abhay",
+      "city": "Chicago",
+      "contactNumber": "5555555555",
+      "year": 2023,
+      "photo": "https://randomuser.me/api/portraits/men/3.jpg",
+      "totalPurchasesPerYear": 6200
+    },
+    {
+      "id": 4,
+      "name": "Sarah Williams",
+      "city": "Houston",
+      "contactNumber": "4445556666",
+      "year": 2022,
+      "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+      "totalPurchasesPerYear": 4800
+    },
+    {
+      "id": 5,
+      "name": "David Brown",
+      "city": "Phoenix",
+      "contactNumber": "7778889999",
+      "year": 2023,
+      "photo": "https://randomuser.me/api/portraits/men/5.jpg",
+      "totalPurchasesPerYear": 5600
+    },
+    {
+      "id": 6,
+      "name": "Jennifer Lee",
+      "city": "Philadelphia",
+      "contactNumber": "2223334444",
+      "year": 2022,
+      "photo": "https://randomuser.me/api/portraits/women/6.jpg",
+      "totalPurchasesPerYear": 6800
+    },
+    {
+      "id": 7,
+      "name": "Robert Garcia",
+      "city": "San Antonio",
+      "contactNumber": "6667778888",
+      "year": 2023,
+      "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+      "totalPurchasesPerYear": 5300
+    },
+    {
+      "id": 8,
+      "name": "Lisa Martinez",
+      "city": "San Diego",
+      "contactNumber": "3334445555",
+      "year": 2022,
+      "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+      "totalPurchasesPerYear": 7200
+    },
+    {
+      "id": 9,
+      "name": "Kevin Thompson",
+      "city": "Dallas",
+      "contactNumber": "8889990000",
+      "year": 2023,
+      "photo": "https://randomuser.me/api/portraits/men/9.jpg",
+      "totalPurchasesPerYear": 4900
+    },
+    {
+      "id": 10,
+      "name": "Amanda Rodriguez",
+      "city": "San Jose",
+      "contactNumber": "1112223333",
+      "year": 2022,
+      "photo": "https://randomuser.me/api/portraits/women/10.jpg",
+      "totalPurchasesPerYear": 6500
+    },
+    {
+      "name": "Archit",
+      "city": "Delhi",
+      "contactNumber": "1122334455",
+      "year": 2024,
+      "photo": "https://randomuser.me/api/portraits/women/18.jpg",
+      "totalPurchasesPerYear": 3,
+      "id": 11
+    },
+    {
+      "name": "ramandeep",
+      "city": "Austrailia",
+      "contactNumber": "1122334455",
+      "year": 2024,
+      "photo": "https://randomuser.me/api/portraits/men/22.jpg",
+      "totalPurchasesPerYear": 23450,
+      "id": 12
+    }
+  ]
+}
