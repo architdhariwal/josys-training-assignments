@@ -1,0 +1,34 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "samay",
+      "email": "samay@example.com",
+      "department": "Engineering"
+    },
+    {
+      "id": 2,
+      "name": "tanmay",
+      "email": "tanmay@example.com",
+      "department": "Marketing Team"
+    },
+    {
+      "id": 3,
+      "name": "Suits",
+      "email": "suits@example.com",
+      "department": "Sales"
+    },
+    {
+      "id": 5,
+      "name": "CarryMinati",
+      "email": "carry@example.com",
+      "department": "Engineering"
+    },
+    {
+      "name": "dummy3",
+      "email": "dummy3@gmail.com",
+      "department": "testing",
+      "id": 6
+    }
+  ]
+}

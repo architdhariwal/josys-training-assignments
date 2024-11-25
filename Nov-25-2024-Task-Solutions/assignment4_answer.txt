@@ -1,0 +1,20 @@
+Unit Testing is a software testing method where individual components are tested in isolation to verify they work as intended. A unit test checks a single, specific piece of functionality.
+
+Why we write unit tests:
+
+-To catch bugs early in development when they're easier and cheaper to fix
+-To validate that code changes don't break existing functionality (regression testing)
+-To serve as documentation for how code should behave
+
+Who writes unit tests:
+Typically, developers themselves write unit tests for their own code as part of the development process. This is considered a best practice in modern software development because:
+
+-Developers best understand the intended functionality of their code
+-It promotes test-driven development (TDD) where tests are written before code
+-It makes developers think about edge cases and potential issues while coding
+
+Popular JavaScript Testing Libraries:
+
+-Jest
+-Mocha
+-Enzyme
