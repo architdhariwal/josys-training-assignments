@@ -3,7 +3,7 @@
 In this project i covered all the three assignments in one single react project.
 assignment1,assignment2,assignment3 are present in src/components and their folder names as assign1,assign2,assign3 resp.
 
-i have added the assignment4 answer i txt file adjacent to react_assignments app
+i have added the assignment4 answer in a txt file adjacent to react_assignments app
 
 ## Available Scripts
 
