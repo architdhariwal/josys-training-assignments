@@ -1,0 +1,42 @@
+Mocking is a technique in unit testing where you replace a real implementation of a function, module, or dependency with a fake  implementation. This allows you to:
+
+-Isolate the component or function you're testing
+-Control the behavior of dependencies
+-Test different scenarios without relying on actual implementations
+-Avoid making real API calls or executing complex logic during tests
+
+There are some examples of mocking in React Testing Library:
+
+-Basic Function Mocking
+
+import { render, fireEvent } from '@testing-library/react'
+
+const mockFunction = jest.fn()
+
+test('calls mock function when button is clicked', () => {
+  const { getByText } = render(
+    <MyComponent onClick={mockFunction} />
+  )
+  
+  const button = getByText('Click me')
+  fireEvent.click(button)
+  
+  expect(mockFunction).toHaveBeenCalledTimes(1)
+})
+
+-Mocking Module Functions( Mocking an entire module)
+
+import * as apiModule from './api'
+
+beforeEach(() => {
+  jest.spyOn(apiModule, 'fetchData').mockResolvedValue({
+    data: 'mocked response'
+  })
+})
+
+test('handles API call', async () => {
+  const { findByText } = render(<MyComponent />)
+  
+  const result = await findByText('mocked response')
+  expect(result).toBeInTheDocument()
+})
